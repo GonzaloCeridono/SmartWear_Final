@@ -2,7 +2,11 @@
 
 Esta API RESTful está desarrollada con Node.js, Express y MongoDB (Mongoose). Provee los servicios necesarios para el e-commerce, incluyendo gestión del catálogo y autenticación mediante JSON Web Tokens (JWT).
 
-## 📖 Endpoints de la API
+## Configuración y Variables de Entorno
+
+Abrir el archivo ".env.example" dentro de la carpeta backend, pegar el codigo que se encuentra en el archivo de texto adjuntado al proyecto, y renombrar el archivo a ".env".
+
+## Endpoints de la API
 
 La URL base para las peticiones locales es: `http://localhost:8080/api`
 
