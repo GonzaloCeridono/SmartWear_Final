@@ -10,7 +10,7 @@ export const registrarUsuario = async (
   try {
     const { nombre, email, password } = req.body;
 
-    // 1. Verificamos si el email ya existe en la base de datos
+    // 1. Verifica si el email ya existe en la base de datos
     const existeEmail = await User.findOne({ email });
     if (existeEmail) {
       res.status(400).json({
@@ -19,15 +19,14 @@ export const registrarUsuario = async (
       return;
     }
 
-    // 2. Creamos la instancia del usuario (todavía no se guarda)
+    // 2. Crea la instancia del usuario
     const usuario = new User({ nombre, email, password });
 
-    // 3. Encriptamos la contraseña
-    // El "salt" son las vueltas de encriptación. 10 es el estándar seguro.
+    // 3. Encriptación de contraseña
     const salt = bcryptjs.genSaltSync(10);
     usuario.password = bcryptjs.hashSync(password, salt);
 
-    // 4. Guardamos en MongoDB
+    // 4. Guardar usuario en base de datos
     await usuario.save();
 
     res.status(201).json({
@@ -37,7 +36,7 @@ export const registrarUsuario = async (
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      msg: "Hable con el administrador",
+      msg: "Error al crear el usuario",
     });
   }
 };
@@ -54,15 +53,15 @@ export const loginUsuario = async (
     if (!usuario) {
       res
         .status(400)
-        .json({ msg: "Usuario / Password no son correctos - correo" });
+        .json({ msg: "Usuario / Contraseña no son correctos - correo" });
       return;
     }
 
-    // 2. Verificar si el usuario está activo (por si lo "borramos" lógicamente)
+    // 2. Verificar si el usuario está activo
     if (!usuario.estado) {
       res
         .status(400)
-        .json({ msg: "Usuario / Password no son correctos - estado: false" });
+        .json({ msg: "Usuario / Contraseña no son correctos - estado: false" });
       return;
     }
 
@@ -71,7 +70,7 @@ export const loginUsuario = async (
     if (!validPassword) {
       res
         .status(400)
-        .json({ msg: "Usuario / Password no son correctos - password" });
+        .json({ msg: "Usuario / Contraseña no son correctos - contraseña" });
       return;
     }
 

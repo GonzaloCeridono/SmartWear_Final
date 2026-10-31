@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export const conectarDB = async (): Promise<void> => {
   try {
-    // Usamos el link que guardaste en el .env
+    // Usamos el link del .env
     const dbUrl = process.env.MONGODB_CNN;
 
     if (!dbUrl) {
@@ -10,7 +10,7 @@ export const conectarDB = async (): Promise<void> => {
     }
 
     await mongoose.connect(dbUrl);
-    console.log("Conectado a la base de datos de la tienda 🟢");
+    console.log("Conectado a la base de datos de la tienda");
   } catch (error) {
     console.log(error);
     throw new Error("Error a la hora de iniciar la base de datos");

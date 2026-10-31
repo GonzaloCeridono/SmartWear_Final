@@ -5,11 +5,11 @@ export interface IProduct {
   nombre: string;
   precio: number;
   descripcion: string;
-  categoria: string[]; // ej: "Remeras", "Pantalones", "Accesorios"
-  talles: string[]; // Un array para guardar varios talles ej: ["S", "M", "L"]
+  categoria: string[];
+  talles: string[];
   stock: number;
-  imagenUrl: string; // El link a la foto de la prenda
-  estado: boolean; // Para usar el Borrado Lógico (Soft Delete) que ya dominás
+  imagenUrl: string;
+  estado: boolean;
 }
 
 // 2. El Esquema de Mongoose (Las reglas estrictas para la base de datos)
@@ -31,7 +31,7 @@ const ProductSchema = new Schema<IProduct>({
   },
   talles: {
     type: [String],
-    default: [], // Si no le mandás talles, arranca como un array vacío
+    default: [],
   },
   stock: {
     type: Number,
