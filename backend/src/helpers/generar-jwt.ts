@@ -5,7 +5,7 @@ export const generarJWT = (uid: string) => {
     // El payload es la info que guardamos en el token. Solo el ID, nada sensible.
     const payload = { uid };
 
-    // Firmamos el token con tu palabra secreta del .env
+    // Firmamos el token la palabra secreta del .env
     jwt.sign(
       payload,
       process.env.SECRETORPRIVATEKEY as string,
