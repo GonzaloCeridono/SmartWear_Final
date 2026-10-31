@@ -1,0 +1,134 @@
+/* LAYOUT GENERAL */
+.layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+  padding: 7rem 2rem 3rem;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ASIDE DESKTOP */
+.asideDesktop {
+  display: block;
+}
+
+/* CONTENIDO */
+.contenido {
+  width: 100%;
+}
+
+.barraSuperior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding: 0 0.3rem;
+}
+
+.nombreCategoria {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* PRODUCT GRID */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* BOTÓN MOBILE */
+.btnAbrirMobile {
+  display: none;
+}
+
+/* OVERLAY MOBILE */
+.overlayMobile {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.overlayVisible {
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: all;
+}
+
+/* ASIDE MOBILE */
+.asideMobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: #fff;
+  padding: 1.5rem;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+}
+
+.asideVisible {
+  transform: translateX(0);
+}
+
+.btnCerrar {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .asideDesktop {
+    display: none;
+  }
+
+  .btnAbrirMobile {
+    display: block;
+    margin-bottom: 1rem;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    background: var(--color-acento);
+    color: #fff;
+    border: none;
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .barraSuperior {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .nombreCategoria {
+    width: 100%;
+    font-size: 1.2rem;
+  }
+
+  .barraSuperior select {
+    width: 100%;
+  }
+}
